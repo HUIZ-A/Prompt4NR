@@ -130,6 +130,7 @@ def eval(model, rank, world_size, data_loader):
     for step, data in enumerate(data_loader):
         batch_enc, batch_attn, batch_labs, batch_imp = data
         imp_ids = imp_ids + batch_imp
+        # list1 += list2, or list1.extend(list2)
         labels = labels + batch_labs.cpu().numpy().tolist()
 
         batch_enc = batch_enc.to(rank)
